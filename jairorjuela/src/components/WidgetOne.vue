@@ -1,13 +1,26 @@
 <template>
   <div>
-    Soy el primer Widget
-    <i class="fab fa-accessible-icon"></i>
-    <h4>{{principalPlace}}</h4>
+    <div id="widget-header" :style="{ backgroundImage: `url(${imgSrc})` }">
+      <section class="upPosition">
+        <h1 class="widget-headquarter"><i class="fas fa-map-marker-alt"></i> {{namePlace}}</h1>
+        <span class="widget-icon">
+          <i :class="temperatureIcon"></i>
+        </span>
+      </section>
+      <section class="downPosition">
+        <h1 class="widget-weather">{{temperature}} <span>&#8451;</span></h1>
+        <h4 class="widget-percent">{{percent}}%</h4>
+        <h4 class="widget-speed">{{speed}}m/s</h4>
+        <h1 class="widget-greeting">{{greeting}}, Condor</h1>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
   import PlacesService from '@/services/places.service'
+  import "weathericons/css/weather-icons.css";
+  //import "weathericons/css/weather-icons-wind.css";
 
   const placesServices = new PlacesService
 
@@ -16,7 +29,13 @@
 
     data(){
       return {
-        principalPlace: {}
+        namePlace: '',
+        temperature: 0,
+        temperatureIcon: '',
+        greeting: '',
+        percent: 0,
+        speed: 0,
+        imgSrc: ''
       }
     },
 
@@ -28,9 +47,25 @@
       async getAllPlaces(){
         await placesServices.getPlaces()
           .then(response => {
-            this.principalPlace = placesServices.getPrincipalPlace(response.data)
+            const principalPlace = placesServices.getPrincipalPlace(response.data)
+            this.getPlaceData(principalPlace)
           })
+      },
+
+      getPlaceData(principalPlace){
+        const placesData = placesServices.getPlacesData(principalPlace)
+
+        this.temperature = placesData.temp
+        this.namePlace = placesData.name
+        this.temperatureIcon = placesData.icon
+        this.greeting = placesData.greeting
+        this.percent = placesData.percent
+        this.speed = placesData.speed
+        this.imgSrc = placesData.img
       }
     }
   }
 </script>
+
+<style lang="scss" scoped>
+</style>

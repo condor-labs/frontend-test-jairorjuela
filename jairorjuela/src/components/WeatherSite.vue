@@ -1,6 +1,5 @@
 <template>
   <div>
-    holis
     <WidgetOne />
   </div>
 </template>
