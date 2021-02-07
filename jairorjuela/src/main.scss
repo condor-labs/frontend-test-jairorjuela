@@ -6,12 +6,18 @@ $purple-dark: #5A00EA;
 $magenta: #D95ECB;
 $blue-light: #597AEF;
 $icon-color: #FFB82C;
+$grey-light: #E6E6E6;
+$grey-dark: #7C7C7C;
 
 body {
   font-family: $body-font;
+  background-color: $grey-light;
 };
 
+//First Widget
+
 #widget-header{
+  border-radius: 5%;
   width: 100%;
   height: 100%;
   background-size: 60% 100%;
@@ -102,7 +108,85 @@ body {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
 
+//Second Widget
+.carousel-controls {
+  color: $purple-dark;
+  margin-left: auto;
+  font-size: 40px
+}
+.carousel-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 7%;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 10em;
+}
+
+.slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "row-day row-day row-day row-day"
+    "row-temp row-temp row-temp row-temp"
+    "carousel-percent carousel-percent carousel-speed carousel-speed";
+  flex: 0 0 22em;
+  height: 10em;
+  margin: 2em;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.1em solid $grey-dark;
+  transition: transform 0.3s ease-in-out;
+}
+
+.row-day {
+  grid-area: row-day;
+}
+
+.row-temp {
+  grid-area: row-temp;
+}
+
+.wiget-temp{
+  color: $grey-dark;
+}
+
+.carousel-percent{
+  grid-area: carousel-percent;
+  color: $grey-dark;
+  font-size: 12px;
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: initial;
+  &::marker{
+    color: $magenta;
+  }
+}
+
+.carousel-speed{
+  grid-area: carousel-speed;
+  color: $grey-dark;
+  color: $grey-dark;
+  font-size: 12px;
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: initial;
+  &::marker{
+    color: $blue-light;
+  }
+}
+
 @include media('<=phone'){
+//First Widget
   #widget-header{
     width: 100%;
     height: 100%;
@@ -144,9 +228,29 @@ body {
     font-weight: bold;
     text-shadow: black 0.1em 0.1em 0.2em;
   }
+
+//Second Widget
+  .slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "row-day row-day row-day row-day"
+      "row-temp row-temp row-temp row-temp"
+      "carousel-percent carousel-percent carousel-speed carousel-speed";
+    flex: 0 0 7em;
+    height: 10em;
+    margin: 1em;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1em solid $grey-dark;
+    transition: transform 0.3s ease-in-out;
+  }
 }
 
 @include media('>phone', '<=425px', 'retina2x'){
+//First Widget
   #widget-header{
     width: 100%;
     height: 100%;
@@ -187,10 +291,30 @@ body {
     font-size: 35px;
     font-weight: bold;
     text-shadow: black 0.1em 0.1em 0.2em;
+  }
+
+//Second Widget
+  .slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "row-day row-day row-day row-day"
+      "row-temp row-temp row-temp row-temp"
+      "carousel-percent carousel-percent carousel-speed carousel-speed";
+    flex: 0 0 7em;
+    height: 10em;
+    margin: 1em;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1em solid $grey-dark;
+    transition: transform 0.3s ease-in-out;
   }
 }
 
 @include media('>=tablet', '<desktop'){
+//First Widget
   #widget-header{
     width: 100%;
     height: 100%;
@@ -231,5 +355,24 @@ body {
     font-size: 35px;
     font-weight: bold;
     text-shadow: black 0.1em 0.1em 0.2em;
+  }
+
+//Second Widget
+  .slide {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "row-day row-day row-day row-day"
+      "row-temp row-temp row-temp row-temp"
+      "carousel-percent carousel-percent carousel-speed carousel-speed";
+    flex: 0 0 19em;
+    height: 10em;
+    margin: 1em;
+    justify-content: center;
+    align-items: center;
+    border-right: 0.1em solid $grey-dark;
+    transition: transform 0.3s ease-in-out;
   }
 }

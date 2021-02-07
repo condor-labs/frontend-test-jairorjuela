@@ -22,7 +22,7 @@ export default class DailyForecastService {
     items.list.forEach(item => {
       const dailyForecast = {
         day: this.getDay(item.date),
-        temp: this.tempInCelsius(item.main.temp),
+        temp: Math.round(this.tempInCelsius(item.main.temp)),
         percent: item.wind.deg,
         speed: item.wind.speed
       }
