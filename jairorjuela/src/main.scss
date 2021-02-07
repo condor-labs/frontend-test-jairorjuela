@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import '@/breakpoints.scss';
 
 $body-font: 'Lato', sans-serif;
 $purple-dark: #5A00EA;
+$magenta: #D95ECB;
+$blue-light: #597AEF;
 $icon-color: #FFB82C;
 
 body {
@@ -11,15 +14,14 @@ body {
 #widget-header{
   width: 100%;
   height: 100%;
-  background-size: 100% 100%;
-  border: 1px solid red;
+  background-size: 60% 100%;
+  margin: auto;
 }
 
-.upPosition{
+.up-position{
   display: grid;
   grid-template-columns: auto auto auto auto;
-  grid-gap: 93px;
-  background-color: #2196F3;
+  grid-gap: 35%;
   padding: 1px;
 }
 
@@ -28,15 +30,206 @@ body {
   border-radius: 45px;
   background: $purple-dark;
   padding: 15px;
-  width: 100%;
-  height: 20%;
-  margin-left: 10px;
+  width: 80%;
+  height: 15%;
+  margin-left: 45px;
   font-size: 15px;
 }
 
 .widget-icon{
   color: $icon-color;
-  font-size: 40px;
+  font-size: 70px;
   float: right;
-  margin-left: 90px;
+  margin-left: 40px;
+}
+
+.widget-weather{
+  color: white;
+  padding: 15px;
+  width: 80%;
+  height: 15%;
+  margin-left: 45px;
+  font-size: 55px;
+  text-shadow: black 0.3em 0.1em 0.3em;
+}
+
+.down-position{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 1%;
+  padding: 1px;
+}
+
+.widget-percent{
+  color: white;
+  padding: 15px;
+  width: 80%;
+  height: 15%;
+  margin-left: 45px;
+  font-size: 20px;
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: inside;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  &::marker{
+    color: $magenta;
+  }
+}
+
+.widget-speed{
+  color: white;
+  padding: 15px;
+  width: 80%;
+  height: 15%;
+  font-size: 20px;
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: inside;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  &::marker{
+    color: $blue-light;
+  }
+}
+
+.widget-greeting{
+  color: white;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  margin-left: 45px;
+  font-size: 45px;
+  font-weight: bold;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+@include media('<=phone'){
+  #widget-header{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    margin: auto;
+  }
+
+  .up-position{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 25%;
+    padding: 1px;
+  }
+
+  .widget-headquarter{
+    color: white;
+    border-radius: 45px;
+    background: $purple-dark;
+    padding: 15px;
+    width: 60%;
+    height: 15%;
+    margin-left: 45px;
+    font-size: 15px;
+  }
+
+  .widget-icon{
+    color: $icon-color;
+    font-size: 70px;
+    float: right;
+    margin-left: 10px;
+  }
+
+  .widget-greeting{
+    color: white;
+    padding: 15px;
+    width: 70%;
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em 0.2em;
+  }
+}
+
+@include media('>phone', '<=425px', 'retina2x'){
+  #widget-header{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    margin: auto;
+  }
+
+  .up-position{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 35%;
+    padding: 1px;
+  }
+
+  .widget-headquarter{
+    color: white;
+    border-radius: 45px;
+    background: $purple-dark;
+    padding: 15px;
+    width: 60%;
+    height: 15%;
+    margin-left: 45px;
+    font-size: 15px;
+  }
+
+  .widget-icon{
+    color: $icon-color;
+    font-size: 70px;
+    float: right;
+    margin-left: 10px;
+  }
+
+  .widget-greeting{
+    color: white;
+    padding: 15px;
+    width: 70%;
+    height: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em 0.2em;
+  }
+}
+
+@include media('>=tablet', '<desktop'){
+  #widget-header{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    margin: auto;
+  }
+
+  .up-position{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 35%;
+    padding: 1px;
+  }
+
+  .widget-headquarter{
+    color: white;
+    border-radius: 45px;
+    background: $purple-dark;
+    padding: 15px;
+    width: 60%;
+    height: 15%;
+    margin-left: 45px;
+    font-size: 15px;
+  }
+
+  .widget-icon{
+    color: $icon-color;
+    font-size: 70px;
+    float: right;
+    margin-left: 10px;
+  }
+
+  .widget-greeting{
+    color: white;
+    padding: 15px;
+    width: 70%;
+    height: 100%;
+    font-size: 35px;
+    font-weight: bold;
+    text-shadow: black 0.1em 0.1em 0.2em;
+  }
 }

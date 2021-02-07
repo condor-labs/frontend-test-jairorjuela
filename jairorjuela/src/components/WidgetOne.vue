@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div id="widget-header" :style="{ backgroundImage: `url(${imgSrc})` }">
-      <section class="upPosition">
+    <div id="widget-header" :style="{ backgroundImage: `url(${imgSrc})`, backgroundRepeat: 'no-repeat' }">
+      <section class="up-position">
         <h1 class="widget-headquarter"><i class="fas fa-map-marker-alt"></i> {{namePlace}}</h1>
         <span class="widget-icon">
           <i :class="temperatureIcon"></i>
         </span>
       </section>
-      <section class="downPosition">
         <h1 class="widget-weather">{{temperature}} <span>&#8451;</span></h1>
+      <section class="down-position">
         <h4 class="widget-percent">{{percent}}%</h4>
         <h4 class="widget-speed">{{speed}}m/s</h4>
-        <h1 class="widget-greeting">{{greeting}}, Condor</h1>
       </section>
+        <h1 class="widget-greeting">{{greeting}}, Condor</h1>
     </div>
   </div>
 </template>
