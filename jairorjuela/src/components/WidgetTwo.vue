@@ -7,7 +7,6 @@
 <script>
   import DailyForecastService from '@/services/dailyForecast.service'
   import "weathericons/css/weather-icons.css";
-  //import "weathericons/css/weather-icons-wind.css";
 
   const dailyForecastService = new DailyForecastService
 

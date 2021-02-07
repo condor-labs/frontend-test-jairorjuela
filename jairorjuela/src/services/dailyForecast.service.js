@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 
 export default class DailyForecastService {
   getDailyForecast(){
@@ -9,12 +10,18 @@ export default class DailyForecastService {
     return temp - 273.1500
   }
 
+  getDay(date){
+    const day = moment(date, 'YYYY/MM/DD')
+
+    return day.format('dddd')
+  }
+
   getDailyItems(items){
     const response = []
 
     items.list.forEach(item => {
       const dailyForecast = {
-        day: item.date,
+        day: this.getDay(item.date),
         temp: this.tempInCelsius(item.main.temp),
         percent: item.wind.deg,
         speed: item.wind.speed
