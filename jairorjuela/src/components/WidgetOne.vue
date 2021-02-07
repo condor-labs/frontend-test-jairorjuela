@@ -25,7 +25,7 @@
   const placesServices = new PlacesService
 
   export default {
-    name: 'WeatherSite',
+    name: 'WidgetOne',
 
     data(){
       return {
