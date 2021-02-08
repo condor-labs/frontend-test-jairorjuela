@@ -57,13 +57,15 @@ export default class PlacesService {
   getPlacesData(principalPlace){
     const time = this.getGreeting(principalPlace.date)
     const response = {
-      temp: this.tempInCelsius(principalPlace.main.temp),
+      temp: Math.round(this.tempInCelsius(principalPlace.main.temp)),
       name: principalPlace.name,
+      country: principalPlace.sys.country,
       greeting: `Good ${time}`,
       icon: this.getIcon(principalPlace.weather[0].icon, time),
       percent: principalPlace.wind.deg,
       speed: principalPlace.wind.speed,
-      img: principalPlace.image
+      img: principalPlace.image,
+      description: principalPlace.description
     }
 
     return response
