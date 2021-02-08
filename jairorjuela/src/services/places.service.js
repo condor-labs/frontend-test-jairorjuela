@@ -70,4 +70,10 @@ export default class PlacesService {
 
     return response
   }
+
+  getIconWithoutTime(icon, date){
+    const time = this.getGreeting(date)
+
+    return this.getIcon(icon, time)
+  }
 }

@@ -24,12 +24,39 @@ export default class DailyForecastService {
         day: this.getDay(item.date),
         temp: Math.round(this.tempInCelsius(item.main.temp)),
         percent: item.wind.deg,
-        speed: item.wind.speed
+        speed: item.wind.speed,
+        humidity: item.main.humidity,
+        icon: item.weather[0].icon,
+        date: item.date
       }
 
-      response.push(dailyForecast)
+      const city = `${items.city.name} - ${items.city.country}`
+
+      response.push({city: city, ...dailyForecast})
     })
 
     return response
+  }
+
+  getMinHumidity(places) {
+    return places.reduce((min, place) => place.humidity < min ? place.humidity : min, places[0].humidity);
+  }
+
+  getBestDay(places){
+    const betterTemp = []
+
+    places.forEach(place => {
+      if(place.temp >=25 && place.temp <= 28){ betterTemp.push(place) }
+    })
+
+    const minHumidity = this.getMinHumidity(betterTemp)
+
+    let bestPlace = {}
+
+    betterTemp.forEach(place => {
+      if(place.humidity === minHumidity){ bestPlace = place }
+    })
+
+    return bestPlace
   }
 }

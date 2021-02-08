@@ -73,6 +73,3 @@
     }
   }
 </script>
-
-<style>
-</style>
